@@ -27,7 +27,7 @@ const JHCP = (config = {}) => {
             root.appendChild(recursiveChildCreation(child))
         })
 
-        console.log(root)
+        return root;
     }
 
     return { build }

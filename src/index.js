@@ -35,6 +35,7 @@ object = {
     ]
 };
 
-JHCP.build(object)
+const element = JHCP.build(object)
+document.querySelector('body').appendChild(element)
 
 
