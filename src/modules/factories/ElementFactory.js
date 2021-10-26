@@ -16,7 +16,6 @@ class ElementFactory {
         domElement.innerHTML = (element.inner == null || element.inner == undefined) ? '' : element.inner;
 
         Visual(domElement).apply(element.styles)
-        
 
         return domElement;
     } 
