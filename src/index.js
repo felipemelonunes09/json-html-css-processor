@@ -3,21 +3,34 @@ const JHCP = model()
 
 object = { 
     tag: 'div',
-    id: 'div-1',
-    inner: 'Minha div 1',
     styles: ['class-1', 'class-2'],
     childs: [
         {
             tag: 'div',
-            id: 'div-1',
-            inner: 'Minha div 1',
-            styles: ['class-1', 'class-2']
+            inner: 'Minha div 2',
+            styles: ['class-3', 'class-5'],
+            childs: [
+                {
+                    tag: 'img',
+                    styles: ['img-class-1']
+                }
+            ]
         },
         {
             tag: 'div',
-            id: 'div-2',
-            inner: 'Minha div 2',
-            styles: ['class-teste', 'class-teste'],
+            inner: 'Minha div 3',
+            childs: [ 
+                {
+                    tag: 'div',
+                    id: 'minha-div',
+                    childs: [
+                        {
+                            tag: 'p',
+                            inner: 'Texto criado com muito amor e carinho'
+                        }
+                    ]
+                }
+            ]
         }
     ]
 };
