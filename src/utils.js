@@ -10,9 +10,8 @@ const IdentityManager = () => {
 }
 
 const Visual = (element) => {
-
     const apply = (styles) => {
-
+        
         if (styles == undefined || element == undefined || element.classList == undefined)
             return ;
 

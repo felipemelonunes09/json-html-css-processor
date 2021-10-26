@@ -3,24 +3,39 @@ const ElementFactory = require("./factories/ElementFactory")
 
 const JHCP = (config = {}) => {
 
-
     const factory = new ElementFactory(config.identityManager);
 
-    build = (data) => {
+    const recursiveChildCreation = (data) => {
 
-        root = factory.build(data)     
+        let element = factory.build(data)
+        if (data.childs != undefined || Array.isArray(data.child) == true) {
+            data.childs.forEach((child) => {
+                element.appendChild( recursiveChildCreation( child ) )
+            })
+        }
+
+        return element;
+    }
+
+    const build = (data) => {
+        
+        root = factory.build(data) 
+        if (data.childs == undefined || Array.isArray(data.childs) == false)
+            return root;
+
+        data.childs.forEach((child) => {
+            root.appendChild(recursiveChildCreation(child))
+        })
+
         console.log(root)
     }
 
-    return {
-        build
-    }
+    return { build }
 }
 
 module.exports = JHCP;
 
 /*
-
     ideal = {
         tag: 'tag',
         inner: 'inner element'
