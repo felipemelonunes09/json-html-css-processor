@@ -1,6 +1,7 @@
 const model = require('./modules/JHCP.js');
 const JHCP = model()
 
+
 object = { 
     tag: 'div',
     styles: ['class-1', 'class-2'],
