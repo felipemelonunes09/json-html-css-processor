@@ -1,41 +1,43 @@
-const essentials = (inner = '', styles = [], childs = [], id) => {
+const essentials = (inner = '', id, styles = [], childs = []) => {
+    return { 
+        inner,
+        id,
+        styles, 
+        childs
+    }
+}
 
-    let prelement = { 
-        inner, 
-        styles,
-        childs,
-        id
-    }
-
-    const p = () => {
-        prelement.tag = 'p'
-        return prelement;
-    }
-    
-    const div = () => {
-        prelement.tag = 'div'
-        return prelement;
-    }
-    
-    const label = () => {
-        prelement.tag = 'label'
-        return prelement;
-    }
-    
-    const section = () => {
-        prelement.tag = 'section'
-        return prelement;
-    }
-    
+const p = (inner, id, styles,  childs) => {
     return {
-        p,
-        div,
-        label,
-        section
+        ...essentials(inner, id, styles,  childs),
+        tag: 'p'
+    }
+}
+
+const div = (inner, id, styles,  childs) => {
+    return {
+        ...essentials(inner, id, styles,  childs),
+        tag: 'div'
+    }
+}
+const label = (inner, id, styles,  childs) => {
+    return {
+        ...essentials(inner, id, styles,  childs),
+        tag: 'label'
+    }
+}
+const section = (inner, id, styles,  childs) => {
+    return {
+        ...essentials(inner, id, styles,  childs),
+        tag: 'section'
     }
 }
 
 
 module.exports = {
-    essentials
+    essentials,
+    p,
+    div,
+    label,
+    section
 }
