@@ -44,7 +44,7 @@ const obj1 = {
     ...div('Div teste', 'div-teste', ['class-1', 'class-2'], 
     [
         p('Texto teste', undefined, ['p'], [
-
+            section('uma section aqui', 'section-id', ['section-class'])
         ]),
         div('div-1', undefined, ['class-3'], [
             div('Um texto super refinado para minha div'),
