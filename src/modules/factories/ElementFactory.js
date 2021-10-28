@@ -15,10 +15,17 @@ class ElementFactory {
         domElement.id = (element.id == null || element.id == undefined) ? this.identityManager.genKey() : element.id;
         domElement.innerHTML = (element.inner == null || element.inner == undefined) ? '' : element.inner;
 
+        // add itens
+        if (element.src != null)
+            domElement.src = element.src;
+
         Visual(domElement).apply(element.styles)
 
         return domElement;
-    } 
+    }
+    
+
+    
 }
 
 module.exports = ElementFactory;
