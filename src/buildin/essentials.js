@@ -33,11 +33,22 @@ const section = (inner, id, styles,  childs) => {
     }
 }
 
+const img = (src, id, styles, childs) => {
+    return {
+        tag: 'img',
+        src, 
+        id, 
+        styles, 
+        childs
+    }
+}
+
 
 module.exports = {
     essentials,
     p,
     div,
     label,
-    section
+    section,
+    img
 }
