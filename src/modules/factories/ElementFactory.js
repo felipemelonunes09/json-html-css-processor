@@ -19,8 +19,10 @@ class ElementFactory {
         if (element.src != null)
             domElement.src = element.src;
 
-        Visual(domElement).apply(element.styles)
+        if (element.onClick != null)
+            domElement.addEventListener('click', element.onClick, false)
 
+        Visual(domElement).apply(element.styles)
         return domElement;
     }
     
