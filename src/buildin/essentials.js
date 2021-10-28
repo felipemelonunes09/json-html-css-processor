@@ -14,9 +14,10 @@ const p = (inner, id, styles,  childs) => {
     }
 }
 
-const div = (inner, id, styles,  childs) => {
+const div = (inner, id, styles,  childs, onClick) => {
     return {
         ...essentials(inner, id, styles,  childs),
+        onClick,
         tag: 'div'
     }
 }
@@ -43,6 +44,14 @@ const img = (src, id, styles, childs) => {
     }
 }
 
+const button = (inner, onClick, id, styles, childs) => {
+    return { 
+        ...essentials(inner, id, styles, childs),
+        onClick,
+        tag: 'button'
+    }
+}
+
 
 module.exports = {
     essentials,
@@ -50,5 +59,6 @@ module.exports = {
     div,
     label,
     section,
+    button,
     img
 }
