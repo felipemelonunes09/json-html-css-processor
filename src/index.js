@@ -1,4 +1,4 @@
-const { essentials, p, div, section, img } = require('./buildin/essentials.js');
+const { essentials, p, div, section, img, button } = require('./buildin/essentials.js');
 const model = require('./modules/JHCP.js');
 const JHCP = model()
 
@@ -49,7 +49,8 @@ const obj1 = {
         div('div-1', undefined, ['class-3'], [
             div('Um texto super refinado para minha div'),
             img('https://www.viewhotels.jp/ryogoku/wp-content/uploads/sites/9/2020/03/test-img.jpg')
-        ])
+        ]),
+        button('Aperte me', () => alert('Opa eu sou um botão gerado totalmente via javascript'))
     ])
 }
 
