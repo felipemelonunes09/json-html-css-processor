@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/felipemelonunes09/JHCP/issues"
   },
-  "homepage": "https://github.com/felipemelonunes09/JHCP#readme"
+  "homepage": "https://github.com/felipemelonunes09/JHCP#readme",
+  "dependencies": {
+    "webpack": "^5.60.0"
+  }
 }
