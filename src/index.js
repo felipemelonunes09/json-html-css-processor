@@ -1,9 +1,19 @@
+const Element = require('./buildin/elements/BaseElement.js');
 const { essentials, p, div, section, img, button } = require('./buildin/essentials.js');
 const model = require('./modules/JHCP.js');
 const JHCP = model()
 
+const element = new Element('div', 'minha div', 'body', undefined, ['class-1'], { })
+element.build();
 
-const object = { 
+const btn = button('mudar dinamicamente', () => {
+    element.object.inner = 'Div que mudou de forma dinamica'
+})
+
+document.querySelector('body').appendChild( JHCP.build(btn) )
+
+
+/*const object = { 
     tag: 'div',
     styles: ['class-1', 'class-2'],
     childs: [
@@ -57,4 +67,4 @@ const obj1 = {
 const el1 = JHCP.build(obj1)
 console.log(el1);
 
-document.querySelector('body').appendChild(el1)
+document.querySelector('body').appendChild(el1)*/
