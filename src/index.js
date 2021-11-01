@@ -23,8 +23,8 @@ const btn = button('mudar dinamicamente', () => {
     element.object.childs.push( obj )
     element.reload();
 
-    element.destroy();
-
+    //element.destroy();
+    element.show(false)
 })
 
 

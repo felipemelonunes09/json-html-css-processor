@@ -2,7 +2,6 @@ const model = require("../../modules/JHCP.js")
 
 const handler = {
     set: (obj, prop, value) => { 
-        console.log(prop)
         if (prop == 'tag' || prop == 'inner' ||  prop == 'styles' || prop == 'childs') { 
             if (obj['area'] != undefined || obj['_ischild'] == true) {
                 try  {
@@ -70,7 +69,6 @@ class Element {
             if (this.object.area == undefined || area == undefined)
                 return el
 
-
             try {
                 area.removeChild( document.getElementById( this.object.id ) )
                 area.appendChild( el )
@@ -113,8 +111,16 @@ class Element {
         }
     }
 
-    hide () {}
-    show () {}
+    show (yesOrNo = true) {
+
+        if (this.getValidObject()) {
+            let object = document.getElementById( this.object.id )
+            if (object) {
+                object.hidden = yesOrNo;
+            }
+        }
+    }
+
     destroy() {
         if ( this.getValidObject()){
 
