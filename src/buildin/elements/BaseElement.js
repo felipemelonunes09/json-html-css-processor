@@ -2,9 +2,9 @@ const model = require("../../modules/JHCP.js")
 
 const handler = {
     set: (obj, prop, value) => { 
-        
-        if (prop == 'tag' || prop == 'inner' ||  prop == 'styles') { 
-            if (obj['area'] != undefined) {
+        console.log(prop)
+        if (prop == 'tag' || prop == 'inner' ||  prop == 'styles' || prop == 'childs') { 
+            if (obj['area'] != undefined || obj['_ischild'] == true) {
                 try  {
                     obj[prop] = value
                     obj['_holder'].reload();
@@ -23,7 +23,7 @@ const handler = {
 
 class Element { 
 
-    constructor(tag, inner, area, id, styles, config) {
+    constructor(tag, inner, area, id, styles = [], config) {
 
         let _holder = this
         let preObject = {
@@ -32,6 +32,7 @@ class Element {
             id,
             area, 
             styles,
+            childs: [],
             _holder
         }
 
@@ -40,47 +41,87 @@ class Element {
 
     build() {
 
-        if (this.object == undefined)
-            return false;
+        if ( this.getValidObject()) {
 
-        const JHCP = model()
+            const JHCP = model()
+            let el = JHCP.build(this.object)
+            let area = document.getElementById( this.object.area )
 
-        let el = JHCP.build(this.object)
-        let area = document.getElementById( this.object.area )
+            if (this.object.area == undefined || area == undefined)
+                return el
 
-        if (this.object.area == undefined || area == undefined)
-            return el
+            this.object.id = el.id
+            area.appendChild(el)
 
-        this.object.id = el.id
-        area.appendChild(el)
+            return true;
+        }
 
-        console.log(this.object)
-
-        return true;
+        return false;
     }
 
     reload() { 
         
-        // missing validation insted use getValidObject()
-        const JHCP = model();
-        let el = JHCP.build( this.object )
+        if ( this.getValidObject() ) {
+            const JHCP = model();
+            let el = JHCP.build( this.object )
 
-        let area = document.getElementById( this.object.area )
-        
-        if (this.object.area == undefined || area == undefined)
-            return el
+            let area = document.getElementById( this.object.area )
+            
+            if (this.object.area == undefined || area == undefined)
+                return el
 
-        console.log(el)
 
-        area.removeChild( document.getElementById( this.object.id ) )
-        area.appendChild( el )
-        
+            try {
+                area.removeChild( document.getElementById( this.object.id ) )
+                area.appendChild( el )
+            }
+            catch (e) {
 
+            }
+        }
     }
 
-    // warning wait for full implementation
-    getValidObject() { 
+    addChild(data, sync = true) {
+        
+        if (this.getValidObject() == false || data == undefined || ( data.tag == undefined && data.object == undefined ))
+            return false;
 
+        let preObject = (data.tag != undefined) ? data : { ...data.object }
+        preObject._holder = this; // changing to the main holder
+        preObject._ischild = true;
+
+        if (sync) 
+            preObject = new Proxy(preObject, handler) 
+        
+        this.object.childs.push( preObject )
+        this.reload();
+        
+        return true
+    }
+
+    removeChild(id) { 
+        if (this.getValidObject() && this.object.childs != undefined) {
+            let aux = []
+            this.object.childs[id] = undefined
+            this.object.childs.forEach(obj => {
+                if (obj != undefined)
+                    aux.push(obj)
+            })
+            this.object.childs = aux;
+
+            this.reload()
+        }
+    }
+
+    hide () {}
+    show () {}
+    destroy() {}
+    encapsulate() {}
+
+    getValidObject() { 
+        if ( this.object == undefined || this.object.tag == undefined ) 
+            return false
+        return this.object;
     }
     
 }
