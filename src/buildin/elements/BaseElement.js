@@ -22,7 +22,7 @@ const handler = {
 
 class Element { 
 
-    constructor(tag, inner, area, id, styles = [], config) {
+    constructor(tag, inner, area, id, styles = [], config = {}) {
 
         let _holder = this
         let preObject = {
