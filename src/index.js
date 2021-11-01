@@ -3,7 +3,7 @@ const { essentials, p, div, section, img, button } = require('./buildin/essentia
 const model = require('./modules/JHCP.js');
 const JHCP = model()
 
-/*const element = new Element('div', 'minha div', 'body', undefined, ['class-1'], { })
+const element = new Element('div', 'minha div', 'body', undefined, ['class-1'], { })
 
 const obj = { tag: 'div', inner: 'nested child div inserted after build' }
 
@@ -22,11 +22,14 @@ const btn = button('mudar dinamicamente', () => {
     element.object.inner = 'Div que mudou de forma dinamica'
     element.object.childs.push( obj )
     element.reload();
+
+    element.destroy();
+
 })
 
 
 document.querySelector('body').appendChild( JHCP.build(btn) )
-*/
+
 
 /*const object = { 
     tag: 'div',

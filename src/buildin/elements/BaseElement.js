@@ -115,8 +115,18 @@ class Element {
 
     hide () {}
     show () {}
-    destroy() {}
-    encapsulate() {}
+    destroy() {
+        if ( this.getValidObject()){
+
+            let area = document.getElementById( this.object.area )
+            let object = document.getElementById( this.object.id )
+
+            try  { 
+                area.removeChild(object)
+            } catch(e) { console.log(e) }
+
+        }
+    }
 
     getValidObject() { 
         if ( this.object == undefined || this.object.tag == undefined ) 
