@@ -14,6 +14,7 @@ const IdentityManager = () => {
 }
 
 const Visual = (element) => {
+    
     const apply = (styles) => {
         
         if (styles == undefined || element == undefined || element.classList == undefined)
@@ -24,9 +25,23 @@ const Visual = (element) => {
         })
 
         return element;
+    
     }
 
-    return { apply }
+    const reaplly = (styles) => {
+        
+        // warning using wrong implementation
+        if (styles == undefined || element == undefined || element.classList == undefined)
+            return ;
+
+        styles.forEach(sh => {
+            element.classList.remove(sh)
+        })
+
+        apply(styles)
+    }
+
+    return { apply, reaplly }
 }
 
 module.exports = {
