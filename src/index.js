@@ -1,9 +1,34 @@
+const Element = require('./buildin/elements/BaseElement.js');
 const { essentials, p, div, section, img, button } = require('./buildin/essentials.js');
 const model = require('./modules/JHCP.js');
 const JHCP = model()
 
+/*const element = new Element('div', 'minha div', 'body', undefined, ['class-1'], { })
 
-const object = { 
+const obj = { tag: 'div', inner: 'nested child div inserted after build' }
+
+element.addChild({ tag: 'div', inner: 'div por objeto bruto' }, true)
+element.addChild(div('div por buildin object') , true)
+element.addChild(new Element('div', 'div por elementBase class'), true)
+console.log(element.addChild('banana', true))
+
+element.build();
+//element.removeChild(0)
+//element.object.childs[0].inner = 'teste mudando div child de forma dinamica'
+
+element.addChild({ tag: 'div', inner: 'div depois da build' }, true)
+
+const btn = button('mudar dinamicamente', () => {
+    element.object.inner = 'Div que mudou de forma dinamica'
+    element.object.childs.push( obj )
+    element.reload();
+})
+
+
+document.querySelector('body').appendChild( JHCP.build(btn) )
+*/
+
+/*const object = { 
     tag: 'div',
     styles: ['class-1', 'class-2'],
     childs: [
@@ -57,4 +82,4 @@ const obj1 = {
 const el1 = JHCP.build(obj1)
 console.log(el1);
 
-document.querySelector('body').appendChild(el1)
+document.querySelector('body').appendChild(el1)*/

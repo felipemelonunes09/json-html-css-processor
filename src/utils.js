@@ -6,6 +6,10 @@ const IdentityManager = () => {
         return Math.random() * Date.now();
     }
 
+    const omi = () => {
+        return 'nothing implemented yet'
+    }
+
     return { genKey }
 }
 

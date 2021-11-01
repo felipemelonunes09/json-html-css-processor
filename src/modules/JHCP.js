@@ -44,4 +44,15 @@ module.exports = JHCP;
         childs: []
     }
 
+    new idea = {
+        p('text', 'id', 'inner', [styles], [ 
+            div('text', id, inner, [styles], [ 
+                
+            ]), 
+            div([
+                
+            ])
+        ])
+        
+    }
 */
